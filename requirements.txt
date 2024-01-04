@@ -1,10 +1,13 @@
 streamlit
 pandas
+numpy
 matplotlib
 scipy
+plotly==5.3.1
 yfinance
-tensorflow
-
+tensorflow==2.15.0
+requests==2.26.0
+# ... other dependencies
 
 
 
