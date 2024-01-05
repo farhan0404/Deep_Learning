@@ -96,22 +96,22 @@ def dataprocessing(data):
 #loaded_model = load_model('my_model.keras')
 
 from tensorflow.keras.models import load_model
-#load model, set cache to prevent reloading
 import tensorflow as tf
-import requests
 from io import BytesIO
 
-# GitHub raw content URL of the model file
-github_model_url = 'https://github.com/farhan0404/Deep_Learning/blob/main/my_model_2.keras'
+# Assume 'response' is the variable containing your model data
 
-# Fetch the model file
-response = requests.get(github_model_url)
-response.raise_for_status()
+# Debugging statement
+print(f"Content type: {type(response.content)}")
 
-# Load the model directly from BytesIO
-loaded_model = tf.keras.models.load_model(BytesIO(response.content))
+try:
+    loaded_model = tf.keras.models.load_model(response.content)
+    st.success("Model loaded successfully!")
+except Exception as e:
+    st.error(f"Error loading the model: {e}")
+    # Log the full traceback for further investigation
+    st.exception(e)
 
-# Now you can use the loaded_model as needed
 
 
 X,y = dataprocessing(data)
