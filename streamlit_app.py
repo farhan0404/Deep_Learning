@@ -102,7 +102,7 @@ import requests
 from io import BytesIO
 
 # GitHub raw content URL of the model file
-github_model_url = 'https://raw.githubusercontent.com/farhan0404/Deep_Learning/main/my_model_2.keras'
+github_model_url = 'https://github.com/farhan0404/Deep_Learning/blob/main/my_model_2.keras'
 
 # Fetch the model file
 response = requests.get(github_model_url)
