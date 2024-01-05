@@ -98,20 +98,20 @@ def dataprocessing(data):
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 from io import BytesIO
+model_file_path = "https://raw.githubusercontent.com/farhan0404/Deep_Learning/main/my_model_2.keras"
 
-# Assume 'response' is the variable containing your model data
+response = open(model_file_path, "rb").read()
 
 # Debugging statement
-print(f"Content type: {type(response.content)}")
+print(f"Content type: {type(response)}")
 
 try:
-    loaded_model = tf.keras.models.load_model(response.content)
+    loaded_model = tf.keras.models.load_model(BytesIO(response))
     st.success("Model loaded successfully!")
 except Exception as e:
     st.error(f"Error loading the model: {e}")
     # Log the full traceback for further investigation
     st.exception(e)
-
 
 
 X,y = dataprocessing(data)
