@@ -96,15 +96,25 @@ def dataprocessing(data):
 #loaded_model = load_model('my_model.keras')
 
 from tensorflow.keras.models import load_model
+from datetime import date
+import yfinance as yf
+from plotly import graph_objs as go
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+import streamlit as st
 import tensorflow as tf
 from io import BytesIO
-model_file_path = "https://raw.githubusercontent.com/farhan0404/Deep_Learning/main/my_model_2.keras"
 
+# Load the model file
+model_file_path = "https://raw.githubusercontent.com/farhan0404/Deep_Learning/main/my_model_2.keras"
 response = open(model_file_path, "rb").read()
 
 # Debugging statement
 print(f"Content type: {type(response)}")
 
+# Load the model
 try:
     loaded_model = tf.keras.models.load_model(BytesIO(response))
     st.success("Model loaded successfully!")
